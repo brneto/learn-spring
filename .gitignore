@@ -1,0 +1,51 @@
+# Build Directories
+build/
+bin/
+target/
+
+# Linux unneeded files
+*~
+Session.vim
+*.swp
+*._swp
+*.elc
+*_flymake.*
+
+# Windows unneeded files
+*.tmp
+thumbs.db
+Thumbs.db
+Desktop.ini
+desktop.ini
+EhThumbs.db
+Network Trash Folder
+Temporary Items
+
+# Mac OSX unneeded files
+._*
+.DS_Store
+.AppleDouble
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.TemporaryItems
+.TPDLNA
+.Trash-1000
+.AppleDB
+.AppleDesktop
+
+# Compiled files
+*.pyc
+*.out
+*.class
+*.exe
+*.com
+
+# Application specific files
+venv
+node_modules
+.sass-cache
+.apdisk
