@@ -10,14 +10,27 @@ Session.vim
 *._swp
 *.elc
 *_flymake.*
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
 
 # Windows unneeded files
 *.tmp
 thumbs.db
 Thumbs.db
+ehthumbs.db
+EhThumbs.db
+ehthumbs_vista.db
+*.stackdump
 Desktop.ini
 desktop.ini
-EhThumbs.db
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+$RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 
@@ -26,16 +39,52 @@ Temporary Items
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100
 .Trashes
 .VolumeIcon.icns
 .TemporaryItems
+Temporary Items
+.com.apple.timemachine.donotpresent
 .TPDLNA
 .Trash-1000
 .AppleDB
 .AppleDesktop
+Network Trash Folder
+.apdisk
+
+# Eclipse unneeded files
+.metadata
+bin/
+build/
+target/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.project
+.classpath
+.settings/
+.loadpath
+.recommenders
+.externalToolBuilders/
+*.launch
+*.pydevproject
+.cproject
+.factorypath
+.buildpath
+.target
+.tern-project
+.texlipse
+.springBeans
+.recommenders/
+.cache-main
+.scala_dependencies
+.worksheet
 
 # Compiled files
 *.pyc
@@ -48,4 +97,3 @@ Temporary Items
 venv
 node_modules
 .sass-cache
-.apdisk
