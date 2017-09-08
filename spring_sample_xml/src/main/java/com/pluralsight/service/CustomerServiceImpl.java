@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.findAll();
 	}
 
-	// Used by Spring for Setter Injection
+	// Used by Spring for Setter Injection, AutoWired byName and byType
 	public void setCustomerRepository(CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
 	}
