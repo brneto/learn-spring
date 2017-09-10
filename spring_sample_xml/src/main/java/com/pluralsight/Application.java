@@ -9,6 +9,7 @@ import com.pluralsight.service.CustomerService;
 public class Application {
 
 	public static void main(String[] args) {
+		
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		CustomerService service = appContext.getBean("customerService", CustomerService.class);
