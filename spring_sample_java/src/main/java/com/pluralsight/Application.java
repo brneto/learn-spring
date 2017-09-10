@@ -8,10 +8,10 @@ import com.pluralsight.service.CustomerService;
 public class Application {
 
 	public static void main(String[] args) {
-		
+
 		ApplicationContext appContext =
 				new AnnotationConfigApplicationContext(AppConfig.class);
-		
+
 		CustomerService service =
 				appContext.getBean("customerService", CustomerService.class);
 
