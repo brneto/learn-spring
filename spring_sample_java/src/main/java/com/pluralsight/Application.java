@@ -14,6 +14,8 @@ public class Application {
 
 		CustomerService service =
 				appContext.getBean("customerService", CustomerService.class);
+		
+		//CustomerService service = new CustomerServiceImpl();
 
 		System.out.println(service.findAll().get(0).getFirstname());
 	}
