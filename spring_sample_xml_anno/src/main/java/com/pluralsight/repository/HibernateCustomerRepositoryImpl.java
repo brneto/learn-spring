@@ -14,6 +14,11 @@ public class HibernateCustomerRepositoryImpl implements CustomerRepository {
 	@Value("${dbUsername}")
 	private String dbUsername;
 	
+	public HibernateCustomerRepositoryImpl() {
+		super();
+		System.out.println("We've created the repository object");
+	}
+	
 	@Override
 	public List<Customer> findAll() {
 		System.out.println(dbUsername);

@@ -15,6 +15,11 @@ public class CustomerServiceImpl implements CustomerService {
 	//@Autowired
 	private CustomerRepository customerRepository;
 	
+	public CustomerServiceImpl() {
+		super();
+		System.out.println("We've created the service object");
+	}
+	
 	// Annotation for Constructor Injection
 	@Autowired
 	public CustomerServiceImpl(CustomerRepository customerRepository) {
