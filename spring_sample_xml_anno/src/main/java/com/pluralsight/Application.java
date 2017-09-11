@@ -10,6 +10,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		
+		//CustomerService service = new CustomerServiceImpl();
+		
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		CustomerService service = appContext.getBean("customerService", CustomerService.class);
