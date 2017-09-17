@@ -6,10 +6,19 @@
 		 version="3.1">
 
 	<display-name>Fitness Tracker Web Application</display-name>
-
+	
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--
+			If contextConfigLocation not set, Spring MVC looks for
+			a file named [servlet-name]-servlet.xml in the WEB-INF
+			directory of your web application
+		-->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/springmvc-config.xml</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

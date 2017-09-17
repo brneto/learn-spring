@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
 	
 	@RequestMapping(value="/")
-	public String homePage (Model model) {
-		
-		model.addAttribute("startMsg", "Fitness Tracker Web Application");
+	public String homePage () {
 		
 		return "index";
 	}
