@@ -14,6 +14,16 @@ public class MinutesController {
 		
 		System.out.println("exercise: " + exercise.getMinutes());
 		
+		// Chaining of submits
+		return "forward:addMoreMinutes";
+		//return "redirect:addMoreMinutes";
+	}
+	
+	@RequestMapping("/addMoreMinutes")
+	public String addMoreMinutes(@ModelAttribute("exercise") Exercise exercise) {
+		
+		System.out.println("exercise: " + exercise.getMinutes());
+		
 		return "addMinutes";
 	}
 	
