@@ -16,10 +16,14 @@
 	<context:component-scan base-package="com.pluralsight.controller" />
 	
 	<mvc:interceptors>
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="Language" />
+		<bean
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+		p:paramName="Language" />
 	</mvc:interceptors>
 	
-	<bean id="LocaleResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" p:defaultLocale="en" />
+	<bean id="LocaleResolver"
+	class="org.springframework.web.servlet.i18n.SessionLocaleResolver"
+	p:defaultLocale="en" />
 	
 	<bean id="messageSource"
 	class="org.springframework.context.support.ResourceBundleMessageSource"

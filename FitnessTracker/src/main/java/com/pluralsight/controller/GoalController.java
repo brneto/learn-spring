@@ -32,6 +32,10 @@ public class GoalController {
 		
 		System.out.println("Minutes updated: " + goal.getMinutes());
 		
+		if(result.hasErrors()) {
+			return "addGoal";
+		}
+		
 		return "redirect:addMinutes.html";
 	}
 	
