@@ -13,7 +13,7 @@
 	<!-- Used to resolve static page files -->
 	<mvc:resources location="pdf" mapping="/pdf/**" />
 	
-	<context:component-scan base-package="com.pluralsight.controller" />
+	<context:component-scan base-package="com.pluralsight" />
 	
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1" />
