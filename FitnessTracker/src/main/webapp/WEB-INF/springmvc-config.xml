@@ -15,6 +15,38 @@
 	
 	<context:component-scan base-package="com.pluralsight.controller" />
 	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="contentNegotiationManager">
+			<bean class="org.springframework.web.accept.ContentNegotiationManager">
+				<constructor-arg>
+					<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+						<constructor-arg>
+							<map>
+								<entry key="json" value="application/json" />
+								<entry key="xml" value="application/xml" />
+							</map>
+						</constructor-arg>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</property>
+		
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<constructor-arg>
+						<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+							<property name="autodetectAnnotations" value="true" />
+						</bean>
+					</constructor-arg>
+				</bean>
+			</list>
+		</property>
+		
+	</bean>
+	
 	<mvc:interceptors>
 		<bean
 		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
@@ -29,9 +61,18 @@
 	class="org.springframework.context.support.ResourceBundleMessageSource"
 	p:basename="messages" />
 	
+	<!-- 
+		There's a configuration setting
+		that your internal resource view resolver have to be
+		the last view resolver that gets called.
+		
+		This issue has being voted to be fixed
+		but until to be sure is better set order 
+		to highest value.
+	 -->
 	<bean
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver"
- 	p:prefix="/WEB-INF/view/" p:suffix=".jsp" p:order="1" />
+ 	p:prefix="/WEB-INF/view/" p:suffix=".jsp" p:order="2" />
  	
  	<bean
  	class="org.springframework.web.servlet.view.BeanNameViewResolver"
