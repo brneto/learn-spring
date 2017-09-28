@@ -13,4 +13,9 @@ public class HelloController {
 		
 		return "hello";
 	}
+	
+	@RequestMapping("/index")
+	public String index(Model model) {
+		return "forward:index.jsp";
+	}
 }
