@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Event Page</title>
+<!-- 
 <style type="text/css">
 	.error{
 		color: #ff0000;
@@ -19,7 +20,8 @@
 		margin: 16px;
 	}
 </style>
-	
+ -->	
+ <link href="/css/error.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
