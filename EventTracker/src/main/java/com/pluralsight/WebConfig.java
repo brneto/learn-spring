@@ -21,14 +21,14 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages = "com.pluralsight")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-	@Bean // Must have this signature for it works
+	@Bean // Must have this exactly signature or it won't work
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 		messageSource.setBasename("messages");
 		return messageSource;
 	}
 	
-	@Bean // Must have this signature for it works
+	@Bean // Must have this exactly signature or it won't work
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
 		resolver.setDefaultLocale(Locale.ENGLISH);
