@@ -9,14 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Attendee Page</title>
 
-<link href="/css/error.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/error.css">
 </head>
 <body>
 	<a href="?lang=en">
 		English
 	</a>
 	
-	<a href="?lang=br">
+	<a href="?lang=pt">
 		Portuguese
 	</a>
 	
