@@ -87,9 +87,11 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+nbactions.xml
+nb-configuration.xml
 
 # Intellij IDEA unneeded files
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
