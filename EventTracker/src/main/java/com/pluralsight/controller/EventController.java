@@ -1,20 +1,20 @@
 package com.pluralsight.controller;
 
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.pluralsight.model.Event;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @SessionAttributes("event")
 public class EventController {
 
-	@RequestMapping(value = "/event", method = RequestMethod.GET)
+	//@RequestMapping(value = "/event", method = RequestMethod.GET)
+	@GetMapping("/event")
 	public String displayEventPage(Model model) {
 		Event event = new Event();
 		event.setName("Java User Group");
@@ -23,7 +23,8 @@ public class EventController {
 		return "event";
 	}
 	
-	@RequestMapping(value = "/event", method = RequestMethod.POST)
+	//@RequestMapping(value = "/event", method = RequestMethod.POST)
+	@PostMapping("/event")
 	public String processEvent(@ModelAttribute("event") Event event) {
 		System.out.println(event);
 		
