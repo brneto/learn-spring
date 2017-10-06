@@ -13,7 +13,6 @@ import com.pluralsight.model.Event;
 @SessionAttributes("event")
 public class EventController {
 
-	//@RequestMapping(value = "/event", method = RequestMethod.GET)
 	@GetMapping("/event")
 	public String displayEventPage(Model model) {
 		Event event = new Event();
@@ -23,7 +22,6 @@ public class EventController {
 		return "event";
 	}
 	
-	//@RequestMapping(value = "/event", method = RequestMethod.POST)
 	@PostMapping("/event")
 	public String processEvent(@ModelAttribute("event") Event event) {
 		System.out.println(event);
