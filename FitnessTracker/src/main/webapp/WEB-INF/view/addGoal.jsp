@@ -58,7 +58,7 @@
 	  <div class="control-group"></div>
 	</div>
 	
-	<script type="text/javascript" src="asset/js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="asset/js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="asset/js/bootstrap.js"></script>
 </body>
 </html>

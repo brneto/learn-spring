@@ -46,7 +46,7 @@ body {
 		</div>
 	</div>
 
-	<script src="asset/js/jquery-1.8.3.js"></script>
+	<script src="asset/js/jquery-3.2.1.js"></script>
 	<script src="asset/js/bootstrap.js"></script>
 </body>
 </html>
