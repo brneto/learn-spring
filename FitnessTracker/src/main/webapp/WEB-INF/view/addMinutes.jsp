@@ -43,7 +43,7 @@
 			<h1><spring:message code="minutes.exercised"/></h1>
 		</div>
 		<a class="btn" href="?lang=en">English</a>
-		<a class="btn" href="?lang=pt">Spanish</a>
+		<a class="btn" href="?lang=pt">Portuguese</a>
 		<br/><br/>
 		<form:form commandName="exercise">
 			<form:errors path="*" cssClass="errorblock" element="div" />
