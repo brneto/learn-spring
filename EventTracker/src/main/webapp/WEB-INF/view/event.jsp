@@ -7,26 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Event Page</title>
-<!-- 
-<style type="text/css">
-	.error{
-		color: #ff0000;
-	}
-	.errorblock{
-		color: #000;
-		background-color: #ffeeee;
-		border: 3px solid #ff0000;
-		padding: 8px;
-		margin: 16px;
-	}
-</style>
- -->	
- <link href="/css/error.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="css/error.css">
 </head>
 <body>
 
 	<s:form commandName="event">
-		<s:errors path="*" cssClass="errorBlock" element="div" />
+		<s:errors path="*" cssClass="errorblock" element="div" />
 		<label for="textinput1">Enter Minutes:</label>
 		<s:input path="name" cssErroClass="error" />
 		<s:errors path="name" cssClass="error" />

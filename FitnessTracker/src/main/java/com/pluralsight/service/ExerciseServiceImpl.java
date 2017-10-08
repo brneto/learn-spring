@@ -12,6 +12,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 
 	@Override
 	public List<Activity> findAllActivities() {
+		
 		List<Activity> activities = new ArrayList<>();
 		
 		Activity run = new Activity();
@@ -19,11 +20,11 @@ public class ExerciseServiceImpl implements ExerciseService {
 		activities.add(run);
 		
 		Activity bike = new Activity();
-		run.setDesc("Bike");
+		bike.setDesc("Bike");
 		activities.add(bike);
 		
 		Activity swim = new Activity();
-		run.setDesc("Swim");
+		swim.setDesc("Swim");
 		activities.add(swim);
 		
 		return activities;

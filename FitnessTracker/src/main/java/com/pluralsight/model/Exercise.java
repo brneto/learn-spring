@@ -11,6 +11,14 @@ public class Exercise {
 	
 	@NotNull
 	private String activity;
+	
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
 
 	public int getMinutes() {
 		return minutes;
@@ -18,14 +26,6 @@ public class Exercise {
 
 	public void setMinutes(int minutes) {
 		this.minutes = minutes;
-	}
-
-	public String getActivity() {
-		return activity;
-	}
-
-	public void setActivity(String activity) {
-		this.activity = activity;
 	}
 
 }
