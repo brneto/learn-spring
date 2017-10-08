@@ -1,58 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add Minutes Page</title>
 
-<script type="text/javascript" src="asset/js/jquery-3.2.1.js"></script>
-<script type="text/javascript">
-	$(document).ready(
-		function() {
-			$.getJSON('<spring:url value="activities.json" />', {
-				ajax : 'true'
-			}, function(data) {
-				var html = '<option value="">--Please select one--</option>';
-				var len = data.length;
-				for (var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].desc + '">'
-							+ data[i].desc + '</option>';
-				}
-				html += '</option>';
-				
-				$('#activities').html(html);
-			});
-			
-		});
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap-responsive.css">
+<link rel="stylesheet" type="text/css" href="asset/css/error.css">
+<style>
+	body {
+		/* 60px to make the container go all the way to the bottom of the topbar */ 
+		padding-top: 60px; 
+    }
+</style>
 
-</script>
+<link rel="shortcut icon" href="asset/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="asset/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="asset/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="asset/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="asset/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
-<h1>Add Minutes Exercised</h1>
-
-Language : <a href="?lang=en">English</a> | <a href="?lang=pt">Portuguese</a>
-
-<form:form commandName="exercise">
-<table>
-	<tr>
-		<td><spring:message code="goal.text" /></td>
-		<td><form:input path="minutes"/></td>
-		<td>
-			<form:select id="activities" path="activity"></form:select>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="submit" value="Enter Exercise"/>
-		</td>
-	</tr>
-</table>
-</form:form>
-
-<h1>Our goal for the day is: ${goal.minutes}</h1>
-
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="#">
+					<spring:message code="minutes.exercised"/>
+				</a>
+				<ul class="nav"></ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div>
+			<h1><spring:message code="minutes.exercised"/></h1>
+		</div>
+		<a class="btn" href="?lang=en">English</a>
+		<a class="btn" href="?lang=pt">Spanish</a>
+		<br/><br/>
+		<form:form commandName="exercise">
+			<form:errors path="*" cssClass="errorblock" element="div" />
+			<div class="control-group">
+				<label for="textinput1">
+					<spring:message code="minutes.text"/>
+				</label>
+				<form:input path="minutes"/>
+				<form:errors path="minutes" cssClass="error" />
+			</div>
+			<div class="control-group">
+				<label for="selectinput1">
+					<spring:message code="minutes.activity" />
+				</label>
+				<form:select id="activities" path="activity" />
+			</div>
+			<input type="submit" class="btn" value="<spring:message code="minutes.button.enter"/>" />
+		</form:form>
+		<span class="label">
+ 			<spring:message code="minutes.goal"/> ${goal.minutes}
+		</span>
+	</div>
+	
+	<script type="text/javascript" src="asset/js/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(
+			function() {
+				$.getJSON('<spring:url value="activities.json" />', {
+					ajax : 'true'
+				}, function(data) {
+					var html = '<option value="">--Please select one--</option>';
+					var len = data.length;
+					for (var i = 0; i < len; i++) {
+						html += '<option value="' + data[i].desc + '">'
+								+ data[i].desc + '</option>';
+					}
+					html += '</option>';
+					
+					$('#activities').html(html);
+				});
+				
+			});
+	
+	</script>
+	<script type="text/javascript" src="asset/js/bootstrap.js"></script>
 </body>
 </html>
