@@ -28,34 +28,25 @@
 
 	<div class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
-			<div class="container">
-				<a class="brand" href="#">Add Goal</a>
-				<ul class="nav"></ul>
-			</div>
+			<div class="container"><a class="brand" href="#">Add Goal</a></div>
 		</div>
 	</div>
 	
-	<div>
+	<div class="container">
 		<div>
 			<h1>Add Goal</h1>
-			<p>
-				Add your workout goal in minutes for the day.
-				<br />
-				&nbsp;
- 			</p>
+			<p>Add your workout goal in minutes for the day.</p>
+			<br />
 		</div>
 		
 		<form:form commandName="goal">
 		<form:errors path="*" cssClass="errorblock" element="div" />
-			<label for="textinput1">
-	          Enter Minutes:
-	        </label>	
+			<label for="textinput1">Enter Minutes:</label>	
 			<form:input path="minutes" cssErrorClass="error" />
 			<form:errors path="minutes" cssClass="error" />
 			<br/>
 			<input type="submit" class="btn" value="Enter Goal Minutes"/>
 	  </form:form>
-	  <div class="control-group"></div>
 	</div>
 	
 	<script type="text/javascript" src="asset/js/jquery-3.2.1.js"></script>

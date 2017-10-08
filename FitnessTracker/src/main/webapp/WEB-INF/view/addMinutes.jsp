@@ -26,27 +26,27 @@
 <link rel="apple-touch-icon-precomposed" href="asset/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
-	
+
 	<div class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="brand" href="#">
-					<spring:message code="minutes.exercised"/>
-				</a>
-				<ul class="nav"></ul>
+				<a class="brand" href="#"><spring:message code="minutes.exercised"/></a>
 			</div>
 		</div>
 	</div>
 	
 	<div class="container">
+		<a class="btn" href="?lang=en">English</a>
+		<a class="btn" href="?lang=pt">Portuguese</a>
+		
 		<div>
 			<h1><spring:message code="minutes.exercised"/></h1>
 		</div>
-		<a class="btn" href="?lang=en">English</a>
-		<a class="btn" href="?lang=pt">Portuguese</a>
 		<br/><br/>
+		
 		<form:form commandName="exercise">
 			<form:errors path="*" cssClass="errorblock" element="div" />
+			
 			<div class="control-group">
 				<label for="textinput1">
 					<spring:message code="minutes.text"/>
@@ -54,14 +54,17 @@
 				<form:input path="minutes"/>
 				<form:errors path="minutes" cssClass="error" />
 			</div>
+			
 			<div class="control-group">
 				<label for="selectinput1">
 					<spring:message code="minutes.activity" />
 				</label>
 				<form:select id="activities" path="activity" />
 			</div>
+			
 			<input type="submit" class="btn" value="<spring:message code="minutes.button.enter"/>" />
 		</form:form>
+		
 		<span class="label">
  			<spring:message code="minutes.goal"/> ${goal.minutes}
 		</span>
