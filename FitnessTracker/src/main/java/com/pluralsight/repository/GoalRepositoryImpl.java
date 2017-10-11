@@ -17,6 +17,7 @@ public class GoalRepositoryImpl implements GoalRepository {
 	public Goal save(Goal goal) {
 		
 		em.persist(goal);
+		em.flush();
 		
 		return goal;
 	}
