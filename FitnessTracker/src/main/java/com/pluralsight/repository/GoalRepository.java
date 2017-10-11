@@ -1,5 +1,10 @@
 package com.pluralsight.repository;
 
-public class GoalRepository {
+import com.pluralsight.model.Goal;
+
+//By default all method inside of an interface are public.
+public interface GoalRepository {
+	
+	Goal save(Goal goal);
 
 }
