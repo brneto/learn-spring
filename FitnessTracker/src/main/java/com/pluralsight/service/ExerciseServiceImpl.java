@@ -37,8 +37,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 		return activities;
 	}
 
-	@Override
 	@Transactional
+	@Override
 	public Exercise save(Exercise exercise) {
 		return exerciseRepository.save(exercise);
 	}
