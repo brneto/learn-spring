@@ -10,7 +10,7 @@ public interface GoalRepository {
 	
 	Goal save(Goal goal);
 
-	List<Goal> loalAll();
+	List<Goal> loadAll();
 
 	List<GoalReport> findAllGoalReports();
 
