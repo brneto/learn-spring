@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.pluralsight.model.Goal;
+import com.pluralsight.model.GoalReport;
 import com.pluralsight.service.GoalService;
 
 @Controller
 @SessionAttributes("goal")
 public class GoalController {
-	
+
 	@Autowired
 	GoalService goalService;
 
@@ -28,33 +29,42 @@ public class GoalController {
 		Goal goal = new Goal();
 		goal.setMinutes(10);
 		model.addAttribute("goal", goal);
-		
+
 		return "addGoal";
 	}
-	
+
 	@PostMapping("addGoal")
 	public String updateGoal(@Valid @ModelAttribute("goal") Goal goal, BindingResult result) {
-		
+
 		System.out.println("result has errors: " + result.hasErrors());
-		
+
 		System.out.println("Goal set: " + goal.getMinutes());
-		
-		if(result.hasErrors()) {
+
+		if (result.hasErrors()) {
 			return "addGoal";
 		} else {
 			goalService.save(goal);
 		}
-		
+
 		return "redirect:index.jsp";
 	}
-	
+
 	@GetMapping("getGoals")
 	public String getGoals(Model model) {
 		List<Goal> goals = goalService.findAllGoals();
-		
+
 		model.addAttribute("goals", goals);
-		
+
 		return "getGoals";
 	}
-	
+
+	@GetMapping("getGoalReports")
+	public String getGoalReports(Model model) {
+		List<GoalReport> goalReports = goalService.findAllGoalReports();
+
+		model.addAttribute("goalReports", goalReports);
+
+		return "getGoalReports";
+	}
+
 }
