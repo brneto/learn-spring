@@ -1,11 +1,10 @@
 package com.pluralsight.repository;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -28,24 +27,22 @@ public class GoalRepositoryImpl implements GoalRepository {
 	}
 
 	@Override
-	public List<Goal> loalAll() {
-		Query query = em.createQuery("Select g from Goal g");
+	public List<Goal> loadAll() {
+		//Query query = em.createQuery("Select g from Goal g");
 		
-		@SuppressWarnings("unchecked")
-		List<Goal> goals = Collections.checkedList(query.getResultList(), Goal.class);
+		TypedQuery<Goal> query = em.createNamedQuery(Goal.FIND_ALL_GOALS, Goal.class);
 		
-		return goals;
+		return query.getResultList();
 	}
 
 	@Override
 	public List<GoalReport> findAllGoalReports() {
-		Query query = em.createQuery("Select new com.pluralsight.model.GoalReport(g.minutes, e.minutes, e.activity) "
-				+ "from Goal g, Exercise e where g.id = e.goal.id");
+		//Query query = em.createQuery("Select new com.pluralsight.model.GoalReport(g.minutes, e.minutes, e.activity) "
+		//		+ "from Goal g, Exercise e where g.id = e.goal.id");
 		
-		@SuppressWarnings("unchecked")
-		List<GoalReport> goalReports = Collections.checkedList(query.getResultList(), GoalReport.class);
+		TypedQuery<GoalReport> query = em.createNamedQuery(Goal.FIND_GOAL_REPORTS, GoalReport.class);
 		
-		return goalReports;
+		return query.getResultList();
 	}
 
 }
