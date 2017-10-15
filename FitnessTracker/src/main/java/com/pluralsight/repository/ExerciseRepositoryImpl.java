@@ -16,8 +16,14 @@ public class ExerciseRepositoryImpl implements ExerciseRepository {
 	@Override
 	public Exercise save(Exercise exercise) {
 		
-		em.persist(exercise);
-		em.flush();
+		if(exercise.getId() == null) {
+			em.persist(exercise);
+			
+			em.flush();
+		}
+		else {
+			exercise = em.merge(exercise);
+		}
 		
 		return exercise;
 	}

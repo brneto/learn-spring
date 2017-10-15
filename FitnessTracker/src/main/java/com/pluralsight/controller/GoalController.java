@@ -2,6 +2,7 @@ package com.pluralsight.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,15 @@ public class GoalController {
 	GoalService goalService;
 
 	@GetMapping("addGoal")
-	public String addGoal(Model model) {
-		Goal goal = new Goal();
-		goal.setMinutes(10);
+	public String addGoal(Model model, HttpSession session) {
+		
+		Goal goal = (Goal)session.getAttribute("goal");
+		
+		if (goal == null) {
+			goal = new Goal();
+			goal.setMinutes(10);
+		}
+		
 		model.addAttribute("goal", goal);
 
 		return "addGoal";
