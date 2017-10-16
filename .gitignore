@@ -89,6 +89,8 @@ nbdist/
 .nb-gradle/
 nbactions.xml
 nb-configuration.xml
+jboss-web.xml
+glassfish-web.xml
 
 # Intellij IDEA unneeded files
 .idea/
