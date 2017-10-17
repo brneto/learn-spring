@@ -12,12 +12,21 @@
 		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 	</http>
 	
+<!-- in-memory user access control -->
+<!-- 
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
 				<user name="berchris" password="secret" authorities="ROLE_USER" />
 				<user name="bruna" password="secrettoo" authorities="ROLE_USER" />
 			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+ -->	
+ 
+ 	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"/>
 		</authentication-provider>
 	</authentication-manager>
 
