@@ -43,7 +43,7 @@ body {
 		<div class="hero-unit">
 			<div>
 				<h1>
-					Welcome to Fitness Tracker <sec:authentication property="name"/>!
+					Welcome to Fitness Tracker <sec:authentication property="name" />!
 				</h1>
 				<p>
 					To get started, we need to enter a goal for what we want to exercise for today.
@@ -52,6 +52,14 @@ body {
 			<a class="btn btn-primary" href="addGoal.html">
 				Add Goal »
 			</a>
+			
+			<!-- By default if the supplied role does not start with 'ROLE_' it will be added. -->
+			<sec:authorize access="hasAnyRole('ADMIN')">
+			<a class="btn btn-primary" href="editGoal.html">
+				Edit Goal »
+			</a>
+			</sec:authorize>
+			
 			<a class="btn btn-primary" href="addMinutes.html">
 				Add Exercise Minutes »
 			</a>
