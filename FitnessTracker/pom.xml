@@ -20,6 +20,7 @@
 		<maven.compiler.target>9</maven.compiler.target>
 		
 		<springframework.version>4.3.12.RELEASE</springframework.version>
+		<springframework.security.version>4.2.3.RELEASE</springframework.security.version>
 	</properties>
 
 	<dependencies>
@@ -52,13 +53,19 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.2.3.RELEASE</version>
+			<version>${springframework.security.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.2.3.RELEASE</version>
+			<version>${springframework.security.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${springframework.security.version}</version>
 		</dependency>
 		
 		<!-- Validation -->
