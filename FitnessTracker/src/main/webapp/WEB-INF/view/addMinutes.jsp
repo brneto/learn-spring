@@ -10,7 +10,6 @@
 <title>Add Minutes Page</title>
 
 <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="asset/css/bootstrap-responsive.css">
 <link rel="stylesheet" type="text/css" href="asset/css/error.css">
 <style>
 	body {
@@ -18,7 +17,12 @@
 		padding-top: 60px; 
     }
 </style>
-
+<link rel="stylesheet" type="text/css" href="asset/css/bootstrap-responsive.css">
+<!-- The HTML5 shim, for IE6-8 support of HTML 5 elements -->
+<!-- [if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+	</script>
+<![endif] -->
 <link rel="shortcut icon" href="asset/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="asset/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="asset/ico/apple-touch-icon-114-precomposed.png">
