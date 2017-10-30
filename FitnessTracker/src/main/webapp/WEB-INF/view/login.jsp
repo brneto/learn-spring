@@ -11,7 +11,7 @@
 </head>
 <body onload="document.f.username.focus();">
 	<h3>Fitness Tracker Custom Login Page</h3>
-	<c:if test="${!empty error}">
+	<c:if test="${param.error != null}">
 		<div class="errorblock">
 			Your login was unsuccessful. <br />
 			Caused: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}

@@ -25,7 +25,7 @@ public class MinutesController {
 	private ExerciseService exerciseService;
 	
 	@GetMapping("/addMinutes")
-	public String getMinutes(@ModelAttribute ("exercise") Exercise exercise) {
+	public String getMinutes(@ModelAttribute("exercise") Exercise exercise) {
 	
 		return "addMinutes";
 	}
