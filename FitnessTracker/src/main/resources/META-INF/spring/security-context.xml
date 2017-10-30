@@ -11,6 +11,7 @@
 <!-- By default if the supplied role does not start with 'ROLE_' it will be added -->
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/**" access="hasRole('USER')" />
+		<http-basic />
 	</http>
 	
 <!-- in-memory user access control -->
