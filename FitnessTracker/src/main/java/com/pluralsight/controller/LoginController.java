@@ -9,16 +9,23 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String login(ModelMap model) {
-		System.out.println("In the login method");
+		System.out.println("In the login method.");
 		
 		return "login";
 	}
 	
-	@GetMapping("/loginFailed")
+	@GetMapping(value = "/login", params = "error")
 	public String loginFailed(ModelMap model) {
 		System.out.println("Login Failed!");
 		
 		model.addAttribute("error", true);
 		return "login";
+	}
+	
+	@GetMapping(value = "/login", params = "logout")
+	public String logout(ModelMap model) {
+		System.out.println("In the logout method.");
+		
+		return "logout";
 	}
 }
