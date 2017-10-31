@@ -28,4 +28,11 @@ public class LoginController {
 		
 		return "logout";
 	}
+	
+	@GetMapping("/denied")
+	public String denied(ModelMap model) {
+		System.out.println("In the denied method.");
+		
+		return "denied";
+	}
 }
