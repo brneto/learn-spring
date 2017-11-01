@@ -35,7 +35,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.25</version>
-			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
@@ -73,6 +72,19 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${springframework.security.version}</version>
+		</dependency>
+		
+		<!-- LDAP -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+			<version>${springframework.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.directory.server</groupId>
+			<artifactId>apacheds-all</artifactId>
+			<version>1.5.5</version>
 		</dependency>
 		
 		<!-- Validation -->

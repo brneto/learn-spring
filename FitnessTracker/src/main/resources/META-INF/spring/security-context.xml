@@ -7,13 +7,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-
-<!-- By default if the supplied role does not start with 'ROLE_' it will be added -->
-	<!-- <http auto-config="true"  use-expressions="true">
+	
+	<ldap-server ldif="classpath:users.ldif" />
+	
+	<!-- By default if the supplied role does not start with 'ROLE_' it will be added -->
+	<!--
+	<http auto-config="true"  use-expressions="true">
 		<intercept-url pattern="/**" access="hasRole('USER')" />
 		<http-basic />
-	</http> -->
-
+	</http>
+	-->
 	<http auto-config="true"  use-expressions="true">
 		<intercept-url pattern="/asset/css/error.css" access="isAnonymous()" />
 		<intercept-url pattern="/login.html" access="isAnonymous()" />
@@ -37,13 +40,23 @@
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
- -->	
- 
+ -->
+ <!-- database user access control -->	
+ <!-- 
  	<authentication-manager>
 		<authentication-provider>
 			<password-encoder hash="bcrypt" />
 			<jdbc-user-service data-source-ref="dataSource" />
 		</authentication-provider>
 	</authentication-manager>
-
+ -->
+ <!-- LDAP user access control -->
+ <authentication-manager>
+ 	<ldap-authentication-provider
+ 		group-search-filter="member={0}"
+ 		group-search-base="ou=groups"
+ 		user-search-base="ou=people"
+ 		user-search-filter="uid={0}" />
+ </authentication-manager>
+ 
 </beans:beans>
