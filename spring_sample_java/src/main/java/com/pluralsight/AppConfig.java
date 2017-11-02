@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan({"com.pluralsight"})
+@ComponentScan
 @PropertySource("app.properties")
 public class AppConfig {
 	
