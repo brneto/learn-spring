@@ -1,3 +1,4 @@
+package com.pluralsight;
 
 
 import org.springframework.context.annotation.Bean;
