@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.pluralsight")
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	@Bean // Must have this exactly signature or it won't work
 	public MessageSource messageSource() {
