@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-class PasswordHash {
+public class PasswordHash {
 
 	@Test
-	void testBCryptHash() {
+	public void testBCryptHash() {
 		
 		String password = "secret";
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -15,7 +15,7 @@ class PasswordHash {
 	}
 	
 	@Test
-	void testMD5Hash() {
+	public void testMD5Hash() {
 		
 		String password = "secret";
 		Md5PasswordEncoder passwordEncoder = new Md5PasswordEncoder();
