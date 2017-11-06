@@ -9,10 +9,9 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		ConfigurableApplicationContext context =
-				new AnnotationConfigApplicationContext(AppConfig.class);
-		
-		try (context) {
+		try (ConfigurableApplicationContext context =
+				new AnnotationConfigApplicationContext(AppConfig.class)) {
+			
 			CustomerService service =
 					context.getBean("customerService", CustomerService.class);
 			
