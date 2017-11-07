@@ -1,10 +1,10 @@
 package com.boot;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import com.boot.controller.HomeController;
-
-import org.junit.Assert;
 
 public class AppTest {
     
@@ -12,6 +12,6 @@ public class AppTest {
 	public void testApp() {
 		HomeController hc = new HomeController();
 		String result = hc.home();
-        Assert.assertEquals(result, "Das Boot, reporting for duty!");
+        assertEquals(result, "Das Boot, reporting for duty!");
     }
 }
