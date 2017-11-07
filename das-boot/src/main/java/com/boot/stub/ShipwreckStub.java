@@ -1,4 +1,4 @@
-package com.boot.controller;
+package com.boot.stub;
 
 import java.util.ArrayList;
 import java.util.HashMap;
