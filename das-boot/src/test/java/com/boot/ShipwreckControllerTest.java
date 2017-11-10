@@ -13,14 +13,14 @@ import org.mockito.MockitoAnnotations;
 
 import com.boot.controller.ShipwreckController;
 import com.boot.model.Shipwreck;
-import com.boot.repository.ShipwreckRepository;
+import com.boot.service.ShipwreckService;
 
 public class ShipwreckControllerTest {
 	@InjectMocks
 	private ShipwreckController sc;
 	
 	@Mock
-	private ShipwreckRepository shipwreckRepository;
+	private ShipwreckService shipwreckService;
 	
 	@Before
 	public void init() {
@@ -31,11 +31,11 @@ public class ShipwreckControllerTest {
 	public void testShipwreckGet() {
 		Shipwreck sw = new Shipwreck();
 		sw.setId(1L);
-		when(shipwreckRepository.findOne(1L)).thenReturn(sw);
+		when(shipwreckService.getById(1L)).thenReturn(sw);
 		
 		Shipwreck wreck = sc.get(1L);
 		
-		verify(shipwreckRepository).findOne(1L);
+		verify(shipwreckService).getById(1L);
 		
 		//assertEquals(1L, wreck.getId().longValue());
 		assertThat(wreck.getId(), equalTo(1L));
