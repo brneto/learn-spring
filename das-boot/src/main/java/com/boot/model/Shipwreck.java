@@ -12,12 +12,12 @@ import lombok.Data;
 public class Shipwreck {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	Long id;
-	String name;
-	String description;
-	String condition;
-	Integer depth;
-	Double latitude;
-	Double longitude;
-	Integer yearDiscovered;
+	private Long id;
+	private String name;
+	private String description;
+	private String condition;
+	private Integer depth;
+	private Double latitude;
+	private Double longitude;
+	private Integer yearDiscovered;
 }
