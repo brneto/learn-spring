@@ -11,7 +11,8 @@ import com.boot.model.ShipwreckReport;
 
 @Repository("shipwreckRepository")
 public interface ShipwreckRepository extends JpaRepository<Shipwreck, Long> {
-	
+
+	// @Query(value = "SELECT name, depth, latitude, longitude FROM SHIPWRECK", nativeQuery = true)
 	@Query("Select new com.boot.model.ShipwreckReport(s.name, s.depth, s.latitude, s.longitude) "
 			+ "from Shipwreck s")
 	List<ShipwreckReport> findAllShipwreckReports();
