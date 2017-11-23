@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.io.IOException;
+import java.util.StringJoiner;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,9 @@ public class ShipwreckControllerWebIntegrationTest {
 	private TestRestTemplate restTemplate;
 	
 	@LocalServerPort
-	int port;
+	private int port;
+	
+	private StringJoiner jsonStringJoiner = new StringJoiner(",");
 	
 	@Test
 	public void testListAll() throws IOException {
@@ -41,7 +44,15 @@ public class ShipwreckControllerWebIntegrationTest {
 		JsonNode responseJson = objectMapper.readTree(response.getBody());
 		
 		assertThat(responseJson.isMissingNode(), equalTo(false));
-		assertThat(responseJson.toString(), equalTo("[]"));
+		
+		jsonStringJoiner
+			.add("[{\"id\":1,\"name\":\"U869\",\"description\":\"A very deep German UBoat\"")
+			.add("\"condition\":\"FAIR\",\"depth\":200,\"latitude\":44.12,\"longitude\":138.44,\"yearDiscovered\":1994}")
+			.add("{\"id\":2,\"name\":\"Thistlegorm\",\"description\":\"British merchant boat in the Red Sea\"")
+			.add("\"condition\":\"GOOD\",\"depth\":80,\"latitude\":44.12,\"longitude\":138.44,\"yearDiscovered\":1994}")
+			.add("{\"id\":3,\"name\":\"S.S. Yongala\",\"description\":\"A luxury passenger ship wrecked on the great barrier reef\"")
+			.add("\"condition\":\"FAIR\",\"depth\":50,\"latitude\":44.12,\"longitude\":138.44,\"yearDiscovered\":1994}]");
+		assertThat(responseJson.toString(), equalTo(jsonStringJoiner.toString()));
 	}
 
 }
