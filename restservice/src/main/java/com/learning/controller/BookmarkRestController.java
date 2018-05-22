@@ -22,7 +22,9 @@ import com.learning.exception.UserNotFoundException;
 import com.learning.model.Bookmark;
 import com.learning.repository.AccountRepository;
 import com.learning.repository.BookmarkRepository;
-import com.learning.rest.BookmarkResource;
+
+import resource.BookmarkResource;
+import resource.PersonResource;
 
 
 @RestController
@@ -48,6 +50,11 @@ public class BookmarkRestController {
 			.collect(Collectors.toList()));
 
 		return root;
+	}
+	
+	@GetMapping("/people")
+	public PersonResource readPerson() {
+		return new PersonResource();
 	}
 	
 	@GetMapping("/{userId}/bookmarks")
