@@ -19,18 +19,18 @@ public class Bookmark {
 	
 	@JsonIgnore
 	@ManyToOne
-    private Account account;
+	private Account account;
 
-    private String uri;
-    private String description;
+	private String uri;
+  private String description;
     
-    public Bookmark(final Account account, final String uri, final String description) {
-        this.account = account;
-        this.uri = uri;
-        this.description = description;
-    }
+  public Bookmark(final Account account, final String uri, final String description) {
+  	this.account = account;
+  	this.uri = uri;
+  	this.description = description;
+  }
 
-    public static Bookmark from(Account account, Bookmark bookmark) {
-        return new Bookmark(account, bookmark.uri, bookmark.getDescription());
-    }
+	public static Bookmark from(Account account, Bookmark bookmark) {
+		return new Bookmark(account, bookmark.uri, bookmark.getDescription());
+ 	}
 }
