@@ -21,7 +21,7 @@ public class Bookmark {
 	@ManyToOne
 	private Account account;
 
-	private String uri;
+  private String uri;
   private String description;
     
   public Bookmark(final Account account, final String uri, final String description) {
@@ -30,7 +30,7 @@ public class Bookmark {
   	this.description = description;
   }
 
-	public static Bookmark from(Account account, Bookmark bookmark) {
-		return new Bookmark(account, bookmark.uri, bookmark.getDescription());
- 	}
+  public static Bookmark from(Account account, Bookmark bookmark) {
+	 return new Bookmark(account, bookmark.uri, bookmark.getDescription());
+  }
 }
