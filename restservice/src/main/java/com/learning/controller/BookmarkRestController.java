@@ -53,7 +53,7 @@ public class BookmarkRestController {
 	}
 	
 	@GetMapping("/people")
-	public PersonResource readPerson() {
+	public ResourceSupport readPerson() {
 		return new PersonResource();
 	}
 	
@@ -61,10 +61,14 @@ public class BookmarkRestController {
 	public Resources<BookmarkResource> readBookmarks(@PathVariable String userId) {
 		this.validateUser(userId);
 
-		return new Resources<>(bookmarkRepository
+		Resources<BookmarkResource> resources = new Resources<>(bookmarkRepository
 				.findByAccountUsername(userId).stream()
 				.map(BookmarkResource::new)
 				.collect(Collectors.toList()));
+		
+		resources.add(linkTo(methodOn(this.getClass()).readBookmarks(userId)).withSelfRel());
+		
+		return resources;
 	}
 	
 	@PostMapping("/{userId}/bookmarks")

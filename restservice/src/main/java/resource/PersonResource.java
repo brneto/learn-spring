@@ -1,7 +1,11 @@
 package resource;
 
-import org.springframework.hateoas.Link;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import org.springframework.hateoas.ResourceSupport;
+
+import com.learning.controller.BookmarkRestController;
 
 public class PersonResource extends ResourceSupport {
 	String firstname;
@@ -11,7 +15,7 @@ public class PersonResource extends ResourceSupport {
   	this.firstname = "Berchris";
   	this.lastname = "Requiao";
   	
-  	this.add(new Link("http://myhost/people"));
+  	this.add(linkTo(methodOn(BookmarkRestController.class).readPerson()).withSelfRel());
   }
   
   public String getFirtName() {
