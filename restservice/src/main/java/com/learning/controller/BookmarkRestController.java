@@ -22,9 +22,8 @@ import com.learning.exception.UserNotFoundException;
 import com.learning.model.Bookmark;
 import com.learning.repository.AccountRepository;
 import com.learning.repository.BookmarkRepository;
-
-import resource.BookmarkResource;
-import resource.PersonResource;
+import com.learning.resource.BookmarkResource;
+import com.learning.resource.PersonResource;
 
 
 @RestController
