@@ -24,7 +24,7 @@ import com.learning.repository.BookmarkRepository;
 
 @SpringBootApplication
 public class Application {
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -46,7 +46,7 @@ public class Application {
 		return new ResourceProcessor<Resource<Bookmark>>() {
 			@Override
 	    public Resource<Bookmark> process(Resource<Bookmark> resource) {
-				resource.add(new Link("http://localhost:8080/people", "added-link"));
+				resource.add(new Link(resource.getId().getHref() + "/file", "file"));
 	      return resource;
 	     }
 	   };
