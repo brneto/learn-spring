@@ -3,10 +3,7 @@ package com.learning;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,9 +24,7 @@ import com.learning.repository.BookmarkRepository;
 
 @SpringBootApplication
 public class Application {
-	@Autowired
-	private static final Logger logger = LogManager.getLogger(Application.class);
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -61,17 +56,15 @@ public class Application {
 		return new RepositoryRestConfigurerAdapter() {
 	    @Override
 	    public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
+	    	ResourceHttpMessageConverter pdfHttpMessageConverter = new ResourceHttpMessageConverter();
 	    	List<MediaType> mediaTypes = new ArrayList<>();
-	    	ResourceHttpMessageConverter httpMessageConverter = new ResourceHttpMessageConverter();
 	    	
 	    	mediaTypes.add(MediaType.APPLICATION_PDF);
-	    	httpMessageConverter.setSupportedMediaTypes(mediaTypes);
+	    	pdfHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
 	    	
-	    	messageConverters.add(0, httpMessageConverter);
-	      messageConverters.forEach(c ->
-	        c.getSupportedMediaTypes().forEach(m -> logger.warn(c + ": "+ m)));
+	    	messageConverters.add(0, pdfHttpMessageConverter);
 	    }
-    };
+		};
 	}
-	
+
 }
