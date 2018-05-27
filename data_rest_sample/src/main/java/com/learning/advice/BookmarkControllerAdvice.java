@@ -1,4 +1,4 @@
-package com.learning.controller;
+package com.learning.advice;
 
 import org.springframework.hateoas.VndErrors;
 import org.springframework.http.HttpStatus;
