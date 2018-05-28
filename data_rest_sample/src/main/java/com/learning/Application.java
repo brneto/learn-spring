@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ import org.springframework.hateoas.ResourceProcessor;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.learning.model.Account;
 import com.learning.model.Bookmark;
@@ -24,7 +26,7 @@ import com.learning.repository.BookmarkRepository;
 
 @SpringBootApplication
 public class Application {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -56,15 +58,30 @@ public class Application {
 		return new RepositoryRestConfigurerAdapter() {
 	    @Override
 	    public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
-	    	ResourceHttpMessageConverter pdfHttpMessageConverter = new ResourceHttpMessageConverter();
-	    	List<MediaType> mediaTypes = new ArrayList<>();
-	    	
-	    	mediaTypes.add(MediaType.APPLICATION_PDF);
-	    	pdfHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
-	    	
-	    	messageConverters.add(0, pdfHttpMessageConverter);
+	    	messageConverters.add(0, pdfHttpMessageConverter());
 	    }
 		};
+	}
+	
+	@Bean
+	public WebMvcConfigurer webMvcConfigurer() {
+	    return new WebMvcConfigurer() {
+	        @Override
+	        public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
+	        	messageConverters.add(0, pdfHttpMessageConverter());
+	        }
+	    };
+	}
+	
+	
+	private ResourceHttpMessageConverter pdfHttpMessageConverter() {
+		ResourceHttpMessageConverter pdfHttpMessageConverter = new ResourceHttpMessageConverter();
+		
+		List<MediaType> mediaTypes = new ArrayList<>();
+  	mediaTypes.add(MediaType.APPLICATION_PDF);
+  	
+  	pdfHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
+  	return pdfHttpMessageConverter;
 	}
 
 }
