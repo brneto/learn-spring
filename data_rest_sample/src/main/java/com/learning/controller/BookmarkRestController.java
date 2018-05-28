@@ -50,7 +50,8 @@ public class BookmarkRestController {
 	 * @param bookmarkId
 	 * @return ResponseEntity
 	 */
-	@GetMapping("/{bookmarkId}/file")
+	@GetMapping(value = "/{bookmarkId}/file",
+			produces = MediaType.APPLICATION_PDF_VALUE)
 	public @ResponseBody ResponseEntity<Resource> getBookmarkFile(@PathVariable Long bookmarkId) {
 		
 		ByteArrayResource resource = new ByteArrayResource(
