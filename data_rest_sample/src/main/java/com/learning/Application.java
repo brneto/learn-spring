@@ -27,7 +27,8 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	public @Bean RepositoryRestConfigurer repositoryRestConfigurer() {
+	@Bean
+	public RepositoryRestConfigurer repositoryRestConfigurer() {
 		return new RepositoryRestConfigurerAdapter() {
 			@Override
 			public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
@@ -36,7 +37,8 @@ public class Application {
 		};
 	}
 
-	public @Bean ResourceProcessor<Resource<Bookmark>> bookmarkProcessor() {
+	@Bean
+	public ResourceProcessor<Resource<Bookmark>> bookmarkResourceProcessor() {
 		return new BookmarkResourceProcessor();
 	}
 
