@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,9 +23,6 @@ public class Bookmark {
 
   private String uri;
   private String description;
-  
-  @OneToOne
-  private BMFile bmFile;
     
   public Bookmark(final Account account, final String uri, final String description) {
   	this.account = account;
