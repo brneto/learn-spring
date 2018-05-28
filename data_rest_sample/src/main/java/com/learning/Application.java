@@ -1,6 +1,5 @@
 package com.learning;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,10 +12,9 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapt
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceProcessor;
-import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.ResourceHttpMessageConverter;
 
+import com.learning.converter.PdfHttpMessageConverter;
 import com.learning.model.Account;
 import com.learning.model.Bookmark;
 import com.learning.repository.AccountRepository;
@@ -53,19 +51,9 @@ public class Application {
 		return new RepositoryRestConfigurerAdapter() {
 			@Override
 			public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
-				messageConverters.add(0, getPdfHttpMessageConverter());
+				messageConverters.add(0, new PdfHttpMessageConverter());
 			}
 		};
-	}
-
-	private ResourceHttpMessageConverter getPdfHttpMessageConverter() {
-		ResourceHttpMessageConverter pdfHttpMessageConverter = new ResourceHttpMessageConverter();
-
-		List<MediaType> mediaTypes = new ArrayList<>();
-		mediaTypes.add(MediaType.APPLICATION_PDF);
-
-		pdfHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
-		return pdfHttpMessageConverter;
 	}
 
 }
