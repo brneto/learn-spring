@@ -16,7 +16,6 @@ import org.springframework.hateoas.ResourceProcessor;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.learning.model.Account;
 import com.learning.model.Bookmark;
@@ -25,62 +24,48 @@ import com.learning.repository.BookmarkRepository;
 
 @SpringBootApplication
 public class Application {
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	
+
 	@Bean
-	CommandLineRunner init(AccountRepository accountRepository,
-			BookmarkRepository bookmarkRepository) {
-				return evt ->
-					Arrays.asList("jhoeller,dsyer,pwebb,ogierke,rwinch,mfisher,mpollack,jlong".split(","))
-						.forEach(a -> {
-							Account account = accountRepository.save(new Account(a, "password"));
-							bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/link1/" + a, "A description"));
-							bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/link2/" + a, "A description"));
-						});
+	CommandLineRunner init(AccountRepository accountRepository, BookmarkRepository bookmarkRepository) {
+		return evt -> Arrays.asList("jhoeller,dsyer,pwebb,ogierke,rwinch,mfisher,mpollack,jlong".split(","))
+				.forEach(a -> {
+					Account account = accountRepository.save(new Account(a, "password"));
+					bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/link1/" + a, "A description"));
+					bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/link2/" + a, "A description"));
+				});
 	}
-	
-	
+
 	public @Bean ResourceProcessor<Resource<Bookmark>> bookmarkProcessor() {
 		return new ResourceProcessor<Resource<Bookmark>>() {
 			@Override
-	    public Resource<Bookmark> process(Resource<Bookmark> resource) {
+			public Resource<Bookmark> process(Resource<Bookmark> resource) {
 				resource.add(new Link(resource.getId().getHref() + "/file", "file"));
-	      return resource;
-	     }
-	   };
-	}
-	
-	public @Bean RepositoryRestConfigurer repositoryRestConfigurer() {
-		return new RepositoryRestConfigurerAdapter() {
-	    @Override
-	    public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
-	    	messageConverters.add(0, getPdfHttpMessageConverter());
-	    }
+				return resource;
+			}
 		};
 	}
-	
-	@Bean
-	public WebMvcConfigurer webMvcConfigurer() {
-	    return new WebMvcConfigurer() {
-	        @Override
-	        public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
-	        	messageConverters.add(0, getPdfHttpMessageConverter());
-	        }
-	    };
+
+	public @Bean RepositoryRestConfigurer repositoryRestConfigurer() {
+		return new RepositoryRestConfigurerAdapter() {
+			@Override
+			public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
+				messageConverters.add(0, getPdfHttpMessageConverter());
+			}
+		};
 	}
-	
-	
+
 	private ResourceHttpMessageConverter getPdfHttpMessageConverter() {
 		ResourceHttpMessageConverter pdfHttpMessageConverter = new ResourceHttpMessageConverter();
-		
+
 		List<MediaType> mediaTypes = new ArrayList<>();
-  	mediaTypes.add(MediaType.APPLICATION_PDF);
-  	
-  	pdfHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
-  	return pdfHttpMessageConverter;
+		mediaTypes.add(MediaType.APPLICATION_PDF);
+
+		pdfHttpMessageConverter.setSupportedMediaTypes(mediaTypes);
+		return pdfHttpMessageConverter;
 	}
 
 }
