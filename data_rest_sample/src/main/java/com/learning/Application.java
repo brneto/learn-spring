@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceProcessor;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -17,6 +16,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import com.learning.converter.PdfHttpMessageConverter;
 import com.learning.model.Account;
 import com.learning.model.Bookmark;
+import com.learning.processor.BookmarkResourceProcessor;
 import com.learning.repository.AccountRepository;
 import com.learning.repository.BookmarkRepository;
 
@@ -27,6 +27,19 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	public @Bean RepositoryRestConfigurer repositoryRestConfigurer() {
+		return new RepositoryRestConfigurerAdapter() {
+			@Override
+			public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
+				messageConverters.add(0, new PdfHttpMessageConverter());
+			}
+		};
+	}
+
+	public @Bean ResourceProcessor<Resource<Bookmark>> bookmarkProcessor() {
+		return new BookmarkResourceProcessor();
+	}
+
 	@Bean
 	CommandLineRunner init(AccountRepository accountRepository, BookmarkRepository bookmarkRepository) {
 		return evt -> Arrays.asList("jhoeller,dsyer,pwebb,ogierke,rwinch,mfisher,mpollack,jlong".split(","))
@@ -35,25 +48,6 @@ public class Application {
 					bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/link1/" + a, "A description"));
 					bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/link2/" + a, "A description"));
 				});
-	}
-
-	public @Bean ResourceProcessor<Resource<Bookmark>> bookmarkProcessor() {
-		return new ResourceProcessor<Resource<Bookmark>>() {
-			@Override
-			public Resource<Bookmark> process(Resource<Bookmark> resource) {
-				resource.add(new Link(resource.getId().getHref() + "/file", "file"));
-				return resource;
-			}
-		};
-	}
-
-	public @Bean RepositoryRestConfigurer repositoryRestConfigurer() {
-		return new RepositoryRestConfigurerAdapter() {
-			@Override
-			public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
-				messageConverters.add(0, new PdfHttpMessageConverter());
-			}
-		};
 	}
 
 }
