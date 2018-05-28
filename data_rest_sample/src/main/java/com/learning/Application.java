@@ -57,7 +57,7 @@ public class Application {
 		return new RepositoryRestConfigurerAdapter() {
 	    @Override
 	    public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
-	    	messageConverters.add(0, pdfHttpMessageConverter());
+	    	messageConverters.add(0, getPdfHttpMessageConverter());
 	    }
 		};
 	}
@@ -67,13 +67,13 @@ public class Application {
 	    return new WebMvcConfigurer() {
 	        @Override
 	        public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
-	        	messageConverters.add(0, pdfHttpMessageConverter());
+	        	messageConverters.add(0, getPdfHttpMessageConverter());
 	        }
 	    };
 	}
 	
 	
-	private ResourceHttpMessageConverter pdfHttpMessageConverter() {
+	private ResourceHttpMessageConverter getPdfHttpMessageConverter() {
 		ResourceHttpMessageConverter pdfHttpMessageConverter = new ResourceHttpMessageConverter();
 		
 		List<MediaType> mediaTypes = new ArrayList<>();
