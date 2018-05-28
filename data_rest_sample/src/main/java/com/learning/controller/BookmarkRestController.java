@@ -21,12 +21,8 @@ import com.learning.repository.BMFileRepository;
 @RepositoryRestController
 @RequestMapping("/bookmarks")
 public class BookmarkRestController {
-	private final BMFileRepository bmfileRepository;
-	
 	@Autowired
-	BookmarkRestController(BMFileRepository bmfileRepository) {
-		this.bmfileRepository = bmfileRepository;
-	}
+	private BMFileRepository bmFileRepository;
 
 //	@PostMapping("/{userId}/bookmarks")
 //	public ResponseEntity<?> add(@PathVariable String userId, @RequestBody Bookmark input) {
@@ -54,19 +50,17 @@ public class BookmarkRestController {
 			produces = MediaType.APPLICATION_PDF_VALUE)
 	public @ResponseBody ResponseEntity<Resource> getBookmarkFile(@PathVariable Long bookmarkId) {
 		
-		ByteArrayResource resource = new ByteArrayResource(
-				this.bmfileRepository.findByBookmarkId(bookmarkId)
-				.map(BMFile::getData)
-				.orElseThrow(() -> new BMFileNotFoundException(bookmarkId))
-		);
-		String filename = resource.getFilename();
+		BMFile bmFile = this.bmFileRepository.findByBookmarkId(bookmarkId)
+			.orElseThrow(() -> new BMFileNotFoundException(bookmarkId));
+		String filename = bmFile.getBookmark().getDescription();
+
+		ByteArrayResource resource = new ByteArrayResource(bmFile.getData());
 		Long length = resource.contentLength();
 		
-		ContentDisposition contentDisposition =
-				ContentDisposition.builder("inline").filename(filename).build();
-		
 		HttpHeaders headers = new HttpHeaders();
-		headers.setContentDisposition(contentDisposition);
+		headers.setContentDisposition(
+			ContentDisposition.builder("inline").filename(filename).build()	
+		);
 		headers.setContentLength(length);
 		headers.setContentType(MediaType.APPLICATION_PDF);
 		
