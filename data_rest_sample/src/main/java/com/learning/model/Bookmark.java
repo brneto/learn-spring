@@ -1,9 +1,11 @@
 package com.learning.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,6 +21,7 @@ public class Bookmark {
 	
 	@JsonIgnore
 	@ManyToOne
+	@JoinColumn(foreignKey=@ForeignKey(name="FK_bookmark_account"))
 	private Account account;
 
   private String uri;
